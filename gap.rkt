@@ -95,6 +95,34 @@
 (define-gap GAP_AssList
   (_fun (l : _gap-obj) _uint _gap-obj -> _void))
 
+(define-gap GAP_ElmList
+  (_fun (l : _gap-obj) (pos : _uint) -> _gap-obj))
+
+(define-gap GAP_NewPlist
+  (_fun (cap : _int) -> _gap-obj))
+
+(define-gap GAP_IsString
+  (_fun (o : _gap-obj) -> _int))
+
+(define-gap GAP_LenString
+  (_fun (o : _gap-obj) -> _uint))
+
+(define-gap GAP_CSTR_STRING
+  (_fun (o : _gap-obj) -> _string))
+
+(define-gap GAP_MakeString
+  (_fun (s : _string) -> _gap-obj))
+
+(define-gap GAP_MakeImmString
+  (_fun (s : _string) -> _gap-obj))
+
+(define-gap GAP_ValueOfChar
+  (_fun (o : _gap-obj) -> _int))
+
+(define-gap GAP_CharWithValue
+  (_fun (o : _uint8) -> _gap-obj))
+
+
 ; Our own API
 (define (gap-initialize lib)
   (GAP_Initialize 5 
@@ -104,9 +132,3 @@
                   #f #f))
 
 
-
-; Some experiments
-(gap-initialize "/home/makx/git/gap/master/")
-(GAP_EvalString "PrintTo(\"bla.txt\", 5);")
-
-; (GAP_Finalize)
